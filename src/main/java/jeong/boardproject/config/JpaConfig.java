@@ -7,13 +7,13 @@ import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 
 import java.util.Optional;
 
-@EnableJpaAuditing // domain쪽에서 @CreatedDate 쓰게해줌
+@EnableJpaAuditing
 @Configuration
 public class JpaConfig {
 
     @Bean
     public AuditorAware<String> auditorAware() {
-
-        return () -> Optional.of("uno"); // TODO: 스프링 시큐리티로 인증 기능을 붙이게 될때 수정
+        return () -> Optional.of("uno"); // TODO: 스프링 시큐리티로 인증 기능을 붙이게 될 때, 수정하자
     }
+
 }
