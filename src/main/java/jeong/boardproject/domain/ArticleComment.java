@@ -8,38 +8,35 @@ import lombok.ToString;
 import java.util.Objects;
 
 @Getter
-@ToString
+@ToString(callSuper = true)
 @Table(indexes = {
-
-        @Index(columnList="content"),
-        @Index(columnList="createAt"),
-        @Index(columnList="createBy")
+        @Index(columnList = "content"),
+        @Index(columnList = "createdAt"),
+        @Index(columnList = "createdBy")
 })
-
 @Entity
-public class ArticleComment extends AuditingFields{
+public class ArticleComment extends AuditingFields {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    // @Getter를 사용하면 content,article 를 밖에서 가져갈 수 있는 문이 자동생김 = 정보가져다주는역할
-    // @Setter를 사용하면 content,article 를 원하는대로 바꿀수있는 문이 자동으로 생김  = 정보를 수정하는역할
-    @Setter
-    @ManyToOne(optional = false)
-    private Article article;
+    @Setter @ManyToOne(optional = false) private Article article; // 게시글 (ID)
+    @Setter @ManyToOne(optional = false) private UserAccount userAccount; // 유저 정보 (ID)
 
-    @Setter
-    @Column(nullable = false, length = 500)
-    private String content;
+    @Setter @Column(nullable = false, length = 500) private String content; // 본문
+
 
     protected ArticleComment() {}
 
-    private ArticleComment(Article article, String content) {
+    private ArticleComment(Article article, UserAccount userAccount, String content) {
         this.article = article;
+        this.userAccount = userAccount;
         this.content = content;
     }
-    public static ArticleComment of (Article article, String content) {
-        return new ArticleComment(article,content);
+
+    public static ArticleComment of(Article article, UserAccount userAccount, String content) {
+        return new ArticleComment(article, userAccount, content);
     }
 
     @Override
@@ -53,4 +50,5 @@ public class ArticleComment extends AuditingFields{
     public int hashCode() {
         return Objects.hash(id);
     }
+
 }
