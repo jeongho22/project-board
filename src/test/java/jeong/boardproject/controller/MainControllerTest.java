@@ -32,5 +32,5 @@ class MainControllerTest {
                 .andExpect(forwardedUrl("/articles"))
                 .andDo(MockMvcResultHandlers.print());
     }
-
+    // 왜냐하면 security에 막힘 article페이지가
 }

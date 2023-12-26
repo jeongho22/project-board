@@ -1,6 +1,5 @@
 package jeong.boardproject.dto;
 
-
 import jeong.boardproject.domain.Article;
 
 import java.time.LocalDateTime;

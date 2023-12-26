@@ -15,7 +15,7 @@ import static org.assertj.core.api.Assertions.*;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
 
 @DisplayName("비즈니스 로직 - 페이지네이션")
-@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = PaginationService.class)  // webEnvironment은 시
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.NONE, classes = PaginationService.class)
 class PaginationServiceTest {
 
     private final PaginationService sut;
@@ -29,12 +29,12 @@ class PaginationServiceTest {
     @MethodSource
     @ParameterizedTest(name = "[{index}] 현재 페이지: {0}, 총 페이지: {1} => {2}")
     void givenCurrentPageNumberAndTotalPages_whenCalculating_thenReturnsPaginationBarNumbers(int currentPageNumber, int totalPages, List<Integer> expected) {
-        // Given(주어진 상황)
+        // Given
 
-        // When(수행할 동작)
+        // When
         List<Integer> actual = sut.getPaginationBarNumbers(currentPageNumber, totalPages);
 
-        // Then (예상결과)
+        // Then
         assertThat(actual).isEqualTo(expected);
     }
 
@@ -50,9 +50,6 @@ class PaginationServiceTest {
                 arguments(10, 13, List.of(8, 9, 10, 11, 12)),
                 arguments(11, 13, List.of(9, 10, 11, 12)),
                 arguments(12, 13, List.of(10, 11, 12))
-
-
-                // 테스트 해보고싶은 목록들...
         );
     }
 
@@ -65,7 +62,7 @@ class PaginationServiceTest {
         int barLength = sut.currentBarLength();
 
         // Then
-        assertThat(barLength).isEqualTo(5); // 길이가 5가 나오게되어있다.
+        assertThat(barLength).isEqualTo(5);
     }
 
 }
