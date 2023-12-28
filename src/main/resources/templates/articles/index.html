@@ -29,6 +29,8 @@
                             <div class="row no-gutters">
                                 <div class="col-lg-3 col-md-3 col-sm-12 p-0">
                                     <label for="search-type" hidden>검색 유형</label>
+<!--                                    히든으로 깔끔하게 숨겨줌-->
+
                                     <select class="form-control" id="search-type" name="searchType">
                                         <option>제목</option>
                                         <option>본문</option>
@@ -67,6 +69,7 @@
                 <th class="created-at"><a>작성일</a></th>
             </tr>
             </thead>
+<!--            테이블 헤드부분 thead-->
             <tbody>
             <tr>
                 <td class="title"><a>첫글</a></td>
@@ -87,6 +90,7 @@
                 <td><time>2022-01-03</time></td>
             </tr>
             </tbody>
+            <!--            테이블 바디부분 tbody-->
         </table>
     </div>
 
@@ -113,5 +117,7 @@
 </footer>
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-pprn3073KE6tl6bjs2QrFaJGz5/SUsLqktiwsUTF55Jfv3qYSDhgCecCxMW52nD2" crossorigin="anonymous"></script>
+
+<!--자바 스크립트를 아래두는이유는 자바스크립트를 먼저 읽고 그 이후에 view를 읽게되는데 제대로 렌더링이 되지않을수있다-->
 </body>
 </html>

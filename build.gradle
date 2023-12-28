@@ -53,7 +53,7 @@ tasks.named('test') {
 }
 
 
-// Querydsl 설정부
+// Querydsl 설정부 // 기본값으로 설정하면 문제가 생길수있어서... 경로설정
 def generated = 'src/main/generated'
 
 // querydsl QClass 파일 생성 위치를 지정

@@ -34,6 +34,7 @@ import java.util.Set;
 
 // 데이터 베이스랑 연동하는 어노테이션
 // 클래스의 각 객체는 데이터베이스 테이블의 한 행(row)과 일치하게 됩니다. 클래스의 필드는 테이블의 열(column)과 대응
+
 public class Article extends AuditingFields {
 
     @Id                                                 // 기본키 걸어주고

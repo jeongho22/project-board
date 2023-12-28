@@ -23,15 +23,15 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RequiredArgsConstructor
-@RequestMapping("/articles")
-@Controller
+@RequestMapping("/articles")  // 뷰 엔드 포인트를 articles 로설정해놓음
+@Controller                     // view로 던져줄 어노테이션
 public class ArticleController {
 
     private final ArticleService articleService;
     private final PaginationService paginationService;
 
     @GetMapping
-    public String articles(
+    public String articles(                                                 // articles 함수 보여줌
             @RequestParam(required = false) SearchType searchType,
             @RequestParam(required = false) String searchValue,
             @PageableDefault(size = 10, sort = "createdAt", direction = Sort.Direction.DESC) Pageable pageable,
@@ -44,7 +44,7 @@ public class ArticleController {
         map.addAttribute("paginationBarNumbers", barNumbers);
         map.addAttribute("searchTypes", SearchType.values());
 
-        return "articles/index";
+        return "articles/index";                                            // 이 위치의 html 을 보여줌
     }
 
     @GetMapping("/{articleId}")

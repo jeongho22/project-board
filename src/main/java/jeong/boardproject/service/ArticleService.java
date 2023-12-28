@@ -19,8 +19,10 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityNotFoundException;
 import java.util.List;
 
+
+// 게시판 관련 서비스들
 @Slf4j
-@RequiredArgsConstructor
+@RequiredArgsConstructor // 필수필드에 대한 생성자를 자동으로 만들어주는 어노테이션
 @Transactional
 @Service
 public class ArticleService {
@@ -28,11 +30,11 @@ public class ArticleService {
     private final ArticleRepository articleRepository;
     private final UserAccountRepository userAccountRepository;
 
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true) // SearchType은 변경점이 아니라 readonly로 설정해줘도됌
     public Page<ArticleDto> searchArticles(SearchType searchType, String searchKeyword, Pageable pageable) {
         if (searchKeyword == null || searchKeyword.isBlank()) {
             return articleRepository.findAll(pageable).map(ArticleDto::from);
-        }
+        } // 검색할때 null 이거나 공백이면 모든 내용을 반환한다.
 
         return switch (searchType) {
             case TITLE -> articleRepository.findByTitleContaining(searchKeyword, pageable).map(ArticleDto::from);
@@ -40,7 +42,7 @@ public class ArticleService {
             case ID -> articleRepository.findByUserAccount_UserIdContaining(searchKeyword, pageable).map(ArticleDto::from);
             case NICKNAME -> articleRepository.findByUserAccount_NicknameContaining(searchKeyword, pageable).map(ArticleDto::from);
             case HASHTAG -> articleRepository.findByHashtag("#" + searchKeyword, pageable).map(ArticleDto::from);
-        };
+        }; // 검색 키워드별로 키워드와 페이징을 반환한다.
     }
 
     @Transactional(readOnly = true)

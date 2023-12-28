@@ -35,7 +35,7 @@ public class ArticleCommentService {
                 .toList();
     }
 
-    public void saveArticleComment(ArticleCommentDto dto) {
+    public void saveArticleComment(ArticleCommentDto dto) { // AricleComment를 가져다 쓰는게아니라 Dto를 만들어서 가져다쓴다
         try {
             Article article = articleRepository.getReferenceById(dto.articleId());
             UserAccount userAccount = userAccountRepository.getReferenceById(dto.userAccountDto().userId());

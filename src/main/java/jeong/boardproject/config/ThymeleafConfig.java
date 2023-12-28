@@ -16,7 +16,7 @@ public class ThymeleafConfig {
             SpringResourceTemplateResolver defaultTemplateResolver,
             Thymeleaf3Properties thymeleaf3Properties
     ) {
-        defaultTemplateResolver.setUseDecoupledLogic(thymeleaf3Properties.isDecoupledLogic());
+        defaultTemplateResolver.setUseDecoupledLogic(thymeleaf3Properties.isDecoupledLogic()); // 끄고싶을때는 yaml 파일가서 false 변경
 
         return defaultTemplateResolver;
     }
@@ -25,7 +25,7 @@ public class ThymeleafConfig {
     @RequiredArgsConstructor
     @Getter
     @ConstructorBinding
-    @ConfigurationProperties("spring.thymeleaf3")
+    @ConfigurationProperties("spring.thymeleaf3") // 이걸 쓸려면 보드 어플리케이션쪽가서 ConfigurationPropertiesScan 써줘야함....
     public static class Thymeleaf3Properties {
         /**
          * Use Thymeleaf 3 Decoupled Logic

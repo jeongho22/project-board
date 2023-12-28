@@ -28,6 +28,7 @@ spring:
     base-path: /api
     detection-strategy: annotated
   thymeleaf3.decoupled-logic: true
+#  끄고 싶을땐 false 바꿔주면된다
 
 
 
